@@ -1,0 +1,72 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Gross National Income",
+    "width": 600,
+    "height": 300,
+    "data": {
+        "url": "./avgIQpercountry.csv"
+    },
+    "transform": [{"filter": "datum['Country'] == 'Singapore' || datum['Country'] == 'Hong Kong' || datum['Country'] == 'Belarus' || datum['Country'] == 'Finland' || datum['Country'] == 'Germany' || datum['Country'] == 'Gambia' || datum['Country'] == 'Guatemala' || datum['Country'] == 'Liberia' || datum['Country'] == 'Sierra Leone' || datum['Country'] == 'Nepal'"}],
+    "mark":{ "type": "line", "point": true, "color":"orange" },
+    "encoding": {
+        "x":{
+            "field":"Country",
+            "type": "nominal",
+            "title": "Country"
+        },
+        "y":{
+            "field": " GNI - 2021",
+            "type": "quantitative",
+            "title": "GNI (2021)"
+        },
+        "tooltip":[
+            {"field": "Country", "type": "nominal"},
+            {"field": " GNI - 2021", "type": "quantitative", "title": "GNI", "format": ","}
+        ]
+    },
+    "layer":[{
+        "mark":{ "type": "line", "point": true, "color":"orange" }
+    },
+    {
+        "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -7,
+            "fontSize": 11.5,
+            "fontStyle": "italic"
+        },
+        "encoding": {
+            "text": {"value":"Singapore has highest GNI"},
+            "color":{"value": "grey"},
+            "opacity": {
+                "condition": {
+                    "test": "datum['Country'] == 'Singapore'",
+                    "value": 1
+                },
+                "value": 0
+            }
+        }
+        
+    },{
+        "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -6,
+            "dy": -7,
+            "fontStyle": "italic"
+        },
+        "encoding": {
+            "text": {"value":"Liberia has lowest GNI"},
+            "color":{"value": "grey"},
+            "opacity": {
+                "condition": {
+                    "test": "datum['Country'] == 'Liberia'",
+                    "value": 1
+                },
+                "value": 0
+            }
+        }
+    }]
+}

@@ -1,0 +1,103 @@
+html, body {
+    background-color: #f7dfbf;
+}
+
+.title {
+    background-color:ivory;
+    padding: 30px 30px;
+    border-radius: 70px;
+    width: 1000px;
+    color: chocolate;
+    text-align: center;
+    align-content: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: x-large;
+}
+.pure-g {
+    padding: 15px;
+}
+
+
+.end {
+    color: gray;
+    font-size:xx-small;
+    padding: 10px;
+}
+
+.text {
+    background-color:ivory;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0 0;
+}
+
+.idiom {
+    background-color:ivory;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0 0;
+}
+
+.both {
+    background-color:ivory;
+    display: flex;
+    padding: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    margin: 0 0;
+    gap: 50px;
+}
+
+
+.both2 {
+    background-color:ivory;
+    display: flex;
+    padding: 10px;
+    border-radius: 20px;
+    justify-content: left;
+    margin: 0 0;
+    gap: 120px;
+}
+
+.g1 {
+    background-color:#faebee;
+    padding: 10px;
+    border-radius: 20px;
+    margin: auto;
+    width: 600px;
+}
+
+.g2 {
+    background-color:ivory;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 15px;
+}
+
+h1 {
+    font-family: "Rye", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+
+h2 {
+    font-family: "Instrument Serif", serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size:xx-large;
+}
+
+h3 {
+    font-family: "Instrument Serif", serif;
+    color: grey;
+    font-weight: 300;
+}
+
+p {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:x-large;
+}

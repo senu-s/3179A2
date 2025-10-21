@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Global Literacy Rate",
+    "width": 800,
+    "height": 400,
+    "data": {
+        "url": "./ne_110m.json",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
+    "projection": {"type": "equalEarth"},
+    "layer": [
+        {
+            "data": {"sphere":true},
+            "mark": {"type": "geoshape", "fill":"lightblue"}
+        },
+        {
+            "data": {"graticule": {"step": [25, 25]}},
+            "mark": {"type": "geoshape", "stroke":"gray"}
+        },
+        {
+            "transform": [{
+                "calculate": "'Data is not available in ' + datum.properties.NAME",
+                "as": "note"
+            }
+            ],
+            "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+            "encoding": {"tooltip": {"field": "note"}}
+        },
+        {
+            "transform": [{
+                "lookup": "properties.NAME",
+                "from": {
+                    "data": {
+                    "url": "./avgIQpercountry.csv"
+                    },
+                    "key": "Country",
+                    "fields": ["Literacy Rate"]
+                }
+            }
+            ],
+            "mark": {"type": "geoshape", "stroke": "white"},
+            "encoding": {
+                "color": {
+                    "field": "Literacy Rate",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "threshold",
+                        "domain": [0.5, 0.7, 0.9, 0.95],
+                        "range": ["#ffbb8a", "#ff875c", "#d4596b", "#d10046", "#a30016"]
+                    }
+                },
+                "tooltip": [
+                    {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+                    {"field": "Literacy Rate", "type": "quantitative"}
+                ]
+            }
+        }
+    ],
+    "config": {}
+}

@@ -1,0 +1,57 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "HDI and Mean years of schooling",
+    "width": 600,
+    "height": 300,
+    "layer": [
+        {
+            "data": {
+                "url": "./avgIQpercountry.csv"
+            },
+            "transform": [{"calculate": "0", "as": "note"}],
+            "mark":"rect",
+            "encoding": {
+                "color":{"value":"#d9d9d9"},
+                "tooltip": [
+                    {"field": "note", "title": "No values recorded"}
+                ]
+            }
+        },
+        {
+            "data": {
+                "url": "./avgIQpercountry.csv"
+            },
+            "mark": "rect",
+            "encoding": {
+                "x":{
+                    "field":"Mean years of schooling - 2021",
+                    "type": "quantitative",
+                    "bin": {"maxbins": 15},
+                    "title": "Mean Years of Schooling"
+                },
+                "y":{
+                    "field": "HDI (2021)",
+                    "type": "quantitative",
+                    "bin": {"maxbins": 10},
+                    "title": "Average HDI"
+                },
+                "color": {
+                    "aggregate": "count",
+                    "type": "quantitative",
+                    "title": "Number of countries"
+                },
+                "tooltip": [
+                    {"field":"Mean years of schooling - 2021", "bin":true,"type": "quantitative", "title":"Mean years of schooling"},
+                    {"field": "HDI (2021)", "bin":true,"type": "quantitative", "title": "HDI"},
+                    {"aggregate":"count", "type": "quantitative", "title": "Number of countries"}
+                ]
+            }
+        }
+    ],
+    "config": {
+        "axis": {
+            "grid": true,
+            "gridColor":"white"
+        }
+    }
+}

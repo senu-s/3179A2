@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Eater&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Instrument+Serif:ital@0;1&family=Rye&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css" media="all">
+</head>
+<body>
+    <div class="title">
+        <h1>Education And How It Effects Countries</h1>
+        <h3>Literacy rate, IQ, How it correlates with HDI and GNP, etc</h3>
+    </div>
+    <br><br><br>
+    <!--<h1>Education Among Countries</h1>-->
+    <div class="pure-g">
+        <div class="pure-u-3-4">
+            <div class="idiom padded">
+                <h2>Literacy Rates Around The World</h2>
+                <p>Here is an look at how literacy rates vary globally</p>
+                <div id="vis1"></div>
+            </div>
+        </div>
+        <br>
+        <div class="pure-u-1-4">
+            <div class="g2">
+                <p>Overall, people seem to be literate in most areas globally</p>
+            </div>
+            <div class="g2">
+                <p>Being literate indicates the potential to learn and be educated</p>
+            </div>
+            <div class="g2">
+                <p>People may need relevant resources to further explore this potential</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    <br><br><br>
+
+    <div class="pure-g">
+        <div class="pure-u-1-1">
+            <div class="idiom">
+                <h2>Does Literacy, IQ and Population Show Any Signs Of Correlation?</h2>
+                <p>This shows literacy and IQ, while also considering the country's population</p>
+                <div id="vis2"></div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+            <div class="g2">
+                <p>HDI measures development based on factors like income and education </p>
+            </div>
+            <div class="g2">
+                <p>The heatmap shows a positive correlation between the given factors</p>
+            </div>
+            <div class="g2">
+                <p>This shows that education is essential in a country's development</p>
+            </div>
+        </div>
+        <div class="pure-u-2-3">
+            <div class="idiom">
+                <h2>Average Number Of Years In School Of A Countries vs Human Development Index (HDI)?</h2>
+                <p>A look into the mean HDI and years of schooling</p>
+                <div id="vis6"></div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+
+    <div class="pure-g">
+        <div class="pure-u-1-1">
+            <div class="idiom">
+                <h2>IQ vs GDP</h2>
+                <p>IQ and GDP data for five of the top 10 countries, and five of the bottom 10 countries</p>
+                <div class="both">
+                    <div id="vis8"></div>
+                    <div id="vis7"></div>
+                </div>
+                <div class="both2">
+                    <div class="g1">
+                        <p>This shows the GDP difference in lower and higher-ranking countries</p>
+                    </div>
+                    <div class="g1">
+                        <p>A difference in IQ is seen between higher-ranking and lower-ranking countries</p>
+                    </div>
+                </div>
+                <div class="both2">
+                    <div class="g1">
+                        <p>GDP: Measures the total value of everything that a country produces in goods and services</p>
+                    </div>
+                    <div class="g1">
+                        <p>As for the GDP, it is higher in higher-ranking countries, which shows a correlation with IQ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br><br><br>
+
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+            <div class="idiom">
+                <h2>Gross National Income</h2>
+                <p>GNI for the same set of countries as earlier</p>
+                <div id="vis9"></div>
+            </div>
+        </div>
+        <div class="pure-u-1-3">
+            <div class="g2">
+                <p>It's notable how the low-ranking countries have the lowest GNI</p>
+            </div>
+            <div class="g2">
+                <p>The high-ranking countries have higher GNI values</p>
+            </div>
+            <div class="g2">
+                <p>The higher-ranking countries have higher IQs, indicating a correlation with GNI</p>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="end">
+        <p>Done by: Senuthi Seneviratne ~ Dataset credits: Milippo (Kaggle) - <a href="https://www.kaggle.com/datasets/mlippo/average-global-iq-per-country-with-other-stats">Source</a>  | World Bank Group - <a href="https://databank.worldbank.org/reports.aspx?source=2&series=SE.XPD.TOTL.GD.ZS&country=#">Source</a></p>
+    </div>
+    
+
+    <script type="text/javascript">
+        var chart1 = "./chart1.json"
+        var chart2 = "./chart2.json"
+        var chart6 = "./chart6.json"
+        var chart7 = "./chart7.json"
+        var chart8 = "./chart8.json"
+        var chart9 = "./chart9.json"
+
+        vegaEmbed('#vis1', chart1, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis2', chart2, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis6', chart6, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis7', chart7, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis8', chart8, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis9', chart9, { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    </script>
+    
+</body>
+</html>

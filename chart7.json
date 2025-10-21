@@ -1,0 +1,102 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "IQ and GDP of 5 Higher Ranking Countries",
+    "params":[
+        {
+            "name": "gdp_year",
+            "value": "2018 [YR2018]",
+            "bind": {
+                "input": "select",
+                "options": [
+                    "2018 [YR2018]",
+                    "2019 [YR2019]",
+                    "2020 [YR2020]",
+                    "2021 [YR2021]",
+                    "2022 [YR2022]"
+                ],
+                "labels": [
+                    "2018",
+                    "2019",
+                    "2020",
+                    "2021",
+                    "2022"
+                ],
+                "name": "Year: "
+            }
+        }
+    ],
+    "vconcat": [
+        {
+            "data": {
+                "url": "./avgIQpercountry.csv"
+            },
+            "width":450,
+            "height":150,
+            "transform": [{"filter": "datum['Country'] == 'Singapore' || datum['Country'] == 'Hong Kong' || datum['Country'] == 'Belarus' || datum['Country'] == 'Finland' || datum['Country'] == 'Germany'"}],
+            "mark":{ "type": "bar", "color": "#ebaebc", "size": 40 },
+            "encoding": {
+                "x":{
+                    "field":"Country",
+                    "type": "nominal",
+                    "title": "Country"
+                },
+                "y":{
+                    "field": "Average IQ",
+                    "type": "quantitative",
+                    "title": "IQ",
+                    "scale":{"domain":[0,110]}
+                },
+                "tooltip":[
+                    {"field": "Country", "type": "nominal"},
+                    {"field": "Average IQ", "type": "quantitative", "title": "IQ"}
+                ]
+            }
+        },
+        {
+            "data": {
+                "url": "./gdp.csv"
+            },
+            "width": 450,
+            "height": 100,
+               
+            "transform": [
+                {"filter": "datum['Country Name'] == 'Singapore' || datum['Country Name'] == 'Hong Kong SAR, China' || datum['Country Name'] == 'Belarus' || datum['Country Name'] == 'Finland' || datum['Country Name'] == 'Germany'"},
+                {"calculate": "toNumber(datum[gdp_year])", "as": "GDP"}
+            ],     
+            "layer":[
+                {
+                    "mark": {"type":"rule", "color": "maroon"},
+                    "encoding": {
+                        "x":{
+                            "field": "GDP",
+                            "type": "quantitative",
+                            "scale": {"domain": [0,8]}
+                        },
+                        "y":{
+                            "field": "Country Name",
+                            "type": "nominal"
+                        }
+                    }
+                },
+                {
+                    "mark": {"type":"point", "filled": true,"size": 100, "opacity":1, "color":"orange"},
+                    "encoding": {
+                        "x":{
+                            "field": "GDP",
+                            "type": "quantitative",
+                            "scale": {"domain": [0,8]}
+                        },
+                        "y":{
+                            "field": "Country Name",
+                            "type": "nominal"
+                        },
+                        "tooltip":[
+                            {"field": "Country Name", "type": "nominal"},
+                            {"field": "GDP", "type": "quantitative", "format":".2f"}
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
